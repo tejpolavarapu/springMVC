@@ -1,26 +1,10 @@
 package com.test.pluto.beans.dao;
 
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "PERSON_DATA")
 public class Person{
-
-
-    /*protected String getDatabaseName() {
-        return "test";
-    }
-
-    public MongoClient mongoClient() {
-        return new MongoClient("127.0.0.1", 27017);
-    }
-
-    protected String getMappingBasePackage() {
-        return "com.test";
-    }*/
-
-
-    public Person(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
 
     private long personId;
     private String firstName;
@@ -49,8 +33,6 @@ public class Person{
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
-
 
     @Override
     public String toString() {
