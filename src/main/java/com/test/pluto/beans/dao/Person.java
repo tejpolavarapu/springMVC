@@ -1,12 +1,20 @@
 package com.test.pluto.beans.dao;
 
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "PERSON_DATA")
 public class Person{
 
+
+    @Transient
+    public static final String SEQUENCE_NAME = "person_sequence";
+
+    @Id
     private long personId;
+
     private String firstName;
     private String lastName;
 
