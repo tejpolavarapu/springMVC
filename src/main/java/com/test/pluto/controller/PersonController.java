@@ -1,7 +1,6 @@
 package com.test.pluto.controller;
 
 import com.google.gson.Gson;
-import com.test.pluto.beans.dao.Person;
 import com.test.pluto.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -45,11 +44,18 @@ public class PersonController {
         return personList;
     }
 
-    @RequestMapping(value = " /getperson/{personId}", method= RequestMethod.GET)
-    private Person getPersonDetailsById(@PathVariable String personId){
-        Person person=new Person();
+    @RequestMapping(value = "/getperson/{personId}", method= RequestMethod.GET)
+    @ResponseBody
+    private String getPersonDetailsById(@PathVariable(value="personId") String perId){
+        System.out.println("personId is - "+ perId);
+        String personList = null;
+        try {
+            personList = gson.toJson(personService.getPersonById(perId));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return personList;
 
-        return person;
     }
 
 }

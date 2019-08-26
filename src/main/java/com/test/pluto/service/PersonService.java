@@ -30,4 +30,19 @@ public class PersonService {
         }
         return persons;
     }
+
+    public Person getPersonById(String ID){
+        int id=Integer.parseInt(ID);
+        List<Person> personList=getAllPersons();
+        Person person=new Person();
+
+        for(Person p : personList) {
+            System.out.println("##### "+person.toString());
+            if(p.getPersonId()==id){
+                person=p;
+            }
+        }
+
+        return person;
+    }
 }
