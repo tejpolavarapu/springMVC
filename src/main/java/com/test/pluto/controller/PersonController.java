@@ -6,12 +6,10 @@ import com.test.pluto.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static com.test.pluto.constants.Constants.HELLO_MESSAGE;
 
@@ -26,23 +24,32 @@ public class PersonController {
     private Gson gson = new Gson();
 
 
-    @RequestMapping(path="/sayhello", method = RequestMethod.GET)
-    public @ResponseBody String printHello(ModelMap model) {
-        model.addAttribute("message", HELLO_MESSAGE);
-        return "hello";
+    @RequestMapping(path = "/sayhello", method = RequestMethod.GET)
+    public @ResponseBody
+    String printHello(ModelMap model) {
+        //TODO Read about what "model.addAttribute()" do?
+        //model.addAttribute("message", HELLO_MESSAGE);
+        return HELLO_MESSAGE;
     }
 
-    @RequestMapping(path="/getallpersons", method = RequestMethod.GET)
+    @RequestMapping(path = "/getallpersons", method = RequestMethod.GET)
     @ResponseBody
     public String getPerson() {
 
         String personList = null;
-        try{
+        try {
             personList = gson.toJson(personService.getAllPersons());
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return personList;
+    }
+
+    @RequestMapping(value = " /getperson/{personId}", method= RequestMethod.GET)
+    private Person getPersonDetailsById(@PathVariable String personId){
+        Person person=new Person();
+
+        return person;
     }
 
 }

@@ -17,6 +17,14 @@ public class PersonService {
         List<Person> persons = null;
         try{
             persons = this.personDAO.getAllPersons();
+
+
+
+            for(Person person : persons) {
+                System.out.println("@@@@@@@ "+person.toString());
+            }
+
+
         } catch (Exception e){
             e.printStackTrace();
         }

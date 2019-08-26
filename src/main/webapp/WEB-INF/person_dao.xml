@@ -21,7 +21,7 @@
         <constructor-arg ref="mongoDbFactory" />
     </bean>
 
-    <mongo:db-factory id="mongoDbFactory" dbname="local" mongo-ref="mongoClient" />
+    <mongo:db-factory id="mongoDbFactory" dbname="person" mongo-ref="mongoClient" />
     <mongo:mongo-client id="mongoClient" host="localhost:27017">
         <mongo:client-options connections-per-host="8"
                               connect-timeout="1000"
