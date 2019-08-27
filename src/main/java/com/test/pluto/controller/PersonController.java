@@ -115,6 +115,8 @@ public class PersonController {
         return !Objects.isNull(counter) ? counter.getSeq() : 1;
     }*/
 
+
+
     public long getNextSequenceId(String key) {
 
         Query query = new Query(Criteria.where("_id").is(key));
@@ -143,6 +145,7 @@ public class PersonController {
         //person.setPersonId(getNextSequenceId(person.SEQUENCE_NAME));
         person.setPersonId(id);
         System.out.println("<<<< Insert >>>>\nID - "+person.getPersonId());
+        //System.out.println(getNextSequenceId(person.SEQUENCE_NAME));
         person.setFirstName(firstName);
         System.out.println("First name - "+person.getFirstName());
         person.setLastName(lastName);
@@ -179,23 +182,40 @@ public class PersonController {
 
     }
 
-    //delete a persons by id
-    //URL-pattern :  http://localhost:9090/person/delete/{id}
-    @RequestMapping(value = "/delete/{personId}", method= RequestMethod.GET)
+    //delete a persons by first name
+    //URL-pattern :  http://localhost:9090/person/deletefn/{fname}
+    @RequestMapping(value = "/deletefn/{fname}", method= RequestMethod.GET)
     @ResponseBody
-    public String deleteById(@PathVariable("personId") String id){
+    public String deleteByFname(@PathVariable("fname") String fname){
 
         Person person=new Person();
 
         String personList=null;
 
-        mongoOperation.find(query(where("_id").is(id)),Person.class);
+        person=mongoOperation.findOne(query(where("firstName").is(fname)),Person.class);
         personList="Deleted the person "+ gson.toJson(person);
         mongoOperation.remove(person);
         return personList;
 
     }
 
+
+    //delete a persons by id
+    //URL-pattern :  http://localhost:9090/person/delete/{id}
+    @RequestMapping(value = "/delete/{id}", method= RequestMethod.GET)
+    @ResponseBody
+    public String deleteByFname(@PathVariable("id") long id){
+
+        Person person=new Person();
+
+        String personList=null;
+
+        person=mongoOperation.findOne(query(where("_id").is(id)),Person.class);
+        personList="Deleted the person "+ gson.toJson(person);
+        mongoOperation.remove(person);
+        return personList;
+
+    }
 
 
 
