@@ -9,7 +9,7 @@ public class DatabaseSequence {
     @Id
     private String id;
 
-    private long seq;
+    private int seq;
 
     public String getId() {
         return id;
@@ -19,11 +19,11 @@ public class DatabaseSequence {
         this.id = id;
     }
 
-    public long getSeq() {
+    public int getSeq() {
         return seq;
     }
 
-    public void setSeq(long seq) {
+    public void setSeq(int seq) {
         this.seq = seq;
     }
 }
