@@ -19,6 +19,12 @@ public class PersonService {
             persons = this.personDAO.getAllPersons();
 
 
+
+            for(Person person : persons) {
+                System.out.println("@@@@@@@ "+person.toString());
+            }
+
+
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -31,6 +37,7 @@ public class PersonService {
         Person person=new Person();
 
         for(Person p : personList) {
+            System.out.println("####### "+person.toString());
             if(p.getPersonId()==id){
                 person=p;
             }
