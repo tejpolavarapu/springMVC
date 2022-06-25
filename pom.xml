@@ -70,7 +70,7 @@
     <dependency>
       <groupId>org.springframework.data</groupId>
       <artifactId>spring-data-mongodb</artifactId>
-      <version>1.9.6.RELEASE</version>
+      <version>3.3.5</version>
       <exclusions>
         <exclusion>
           <groupId>org.springframework</groupId>
@@ -95,7 +95,7 @@
     <dependency>
       <groupId>org.springframework.data</groupId>
       <artifactId>spring-data-mongodb</artifactId>
-      <version>2.1.9.RELEASE</version>
+      <version>3.3.5</version>
     </dependency>
 
     <!-- MongoRepositery added -->
